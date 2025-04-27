@@ -1,0 +1,41 @@
+Required supplement images:
+
+1. copper_fungicide.jpg
+2. neem_oil.jpg
+3. myclobutanil.jpg
+4. captan.jpg
+5. thiophanate_methyl.jpg
+6. compost_tea.jpg
+7. propiconazole.jpg
+8. sulfur.jpg
+9. rootstock.jpg
+10. azoxystrobin.jpg
+11. crop_rotation.jpg
+12. corn_seed.jpg
+13. pyraclostrobin.jpg
+14. tebuconazole.jpg
+15. corn_hybrids.jpg
+16. chlorothalonil.jpg
+17. mancozeb.jpg
+18. trifloxystrobin.jpg
+19. copper_bactericide.jpg
+20. bacillus_subtilis.jpg
+21. streptomycin.jpg
+22. boscalid.jpg
+23. metalaxyl.jpg
+24. cymoxanil.jpg
+25. tomato_seed.jpg
+26. difenoconazole.jpg
+27. fludioxonil.jpg
+28. greenhouse_ventilation.jpg
+29. organic_mulch.jpg
+30. insecticidal_soap.jpg
+31. predatory_mites.jpg
+32. fluxapyroxad.jpg
+33. imidacloprid.jpg
+34. reflective_mulch.jpg
+35. resistant_tomato.jpg
+36. aphid_control.jpg
+37. garden_sanitation.jpg
+
+All images should be placed in the /static/images/supplements/ directory. 

@@ -1,0 +1,119 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="container mt-5">
+    <div class="row">
+        <!-- Real-time Updates Panel -->
+        <div class="col-md-8">
+            <div class="card">
+                <div class="card-header bg-primary text-white">
+                    <h3 class="mb-0">Real-time Updates</h3>
+                </div>
+                <div class="card-body">
+                    <div id="updates" class="mb-4" style="height: 400px; overflow-y: auto;">
+                        <!-- Updates will be added here -->
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Control Panel -->
+        <div class="col-md-4">
+            <div class="card">
+                <div class="card-header bg-info text-white">
+                    <h3 class="mb-0">Control Panel</h3>
+                </div>
+                <div class="card-body">
+                    <form id="message-form">
+                        <div class="form-group mb-3">
+                            <label for="topic">Topic</label>
+                            <select class="form-control" id="topic">
+                                <option value="plant-updates">Plant Updates</option>
+                                <option value="weather-alerts">Weather Alerts</option>
+                                <option value="disease-detection">Disease Detection</option>
+                                <option value="community">Community</option>
+                            </select>
+                        </div>
+                        <div class="form-group mb-3">
+                            <label for="message">Message</label>
+                            <textarea class="form-control" id="message" rows="3"></textarea>
+                        </div>
+                        <button type="submit" class="btn btn-primary">Send Update</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/4.0.1/socket.io.js"></script>
+<script>
+    const socket = io();
+    const updates = document.getElementById('updates');
+    const messageForm = document.getElementById('message-form');
+    const topicSelect = document.getElementById('topic');
+    const messageInput = document.getElementById('message');
+
+    // Handle incoming messages
+    socket.on('message', function(data) {
+        const div = document.createElement('div');
+        div.className = 'alert alert-info mb-2';
+        
+        // Format the message based on topic
+        let messageContent = '';
+        switch(data.topic) {
+            case 'plant-updates':
+                div.className = 'alert alert-success';
+                messageContent = `🌱 Plant Update: ${data.message}`;
+                break;
+            case 'weather-alerts':
+                div.className = 'alert alert-warning';
+                messageContent = `🌤️ Weather Alert: ${data.message}`;
+                break;
+            case 'disease-detection':
+                div.className = 'alert alert-danger';
+                messageContent = `⚠️ Disease Detection: ${data.message}`;
+                break;
+            case 'community':
+                div.className = 'alert alert-primary';
+                messageContent = `👥 Community: ${data.message}`;
+                break;
+            default:
+                messageContent = `${data.topic}: ${data.message}`;
+        }
+        
+        div.textContent = messageContent;
+        updates.appendChild(div);
+        updates.scrollTop = updates.scrollHeight;
+    });
+
+    // Handle form submission
+    messageForm.addEventListener('submit', function(e) {
+        e.preventDefault();
+        const topic = topicSelect.value;
+        const message = messageInput.value;
+        
+        if (message.trim()) {
+            socket.emit('message', {
+                topic: topic,
+                message: message
+            });
+            messageInput.value = '';
+        }
+    });
+</script>
+
+<style>
+.alert {
+    margin-bottom: 10px;
+    padding: 10px;
+    border-radius: 5px;
+}
+
+#updates {
+    border: 1px solid #dee2e6;
+    border-radius: 0.25rem;
+    padding: 1rem;
+}
+</style>
+{% endblock %} 

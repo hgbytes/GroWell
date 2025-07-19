@@ -47,7 +47,7 @@ PlantDiseaseApp_Final/
 
 1. **Clone the repository:**
    ```bash
-   git clone https://github.com/yourusername/plant-disease-detection.git
+   git clone https://github.com/hgbytes/Growell
    cd plant-disease-detection
    ```
 
@@ -159,9 +159,6 @@ For additional support:
 4. Push to the branch
 5. Create a Pull Request
 
-## License
-
-This project is licensed under the MIT License - see the LICENSE file for details.
 
 ## Acknowledgments
 

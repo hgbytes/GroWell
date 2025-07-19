@@ -169,8 +169,3 @@ This project is licensed under the MIT License - see the LICENSE file for detail
 - Open-source community
 - Contributors and maintainers
 
-## Contact
-
-For questions and support:
-- Email: support@plantdiseasedetection.com
-- GitHub: https://github.com/yourusername/plant-disease-detection 
